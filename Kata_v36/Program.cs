@@ -14,10 +14,20 @@ namespace Scheduler
         [STAThread]
         static void Main()
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            try
+            {
+                Application.SetHighDpiMode(HighDpiMode.SystemAware);
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainForm());
+            }
+            catch
+            {
+                //Här kan man exempelvis:
+                //Starta om programmet
+                //Ladda ner fellogg till en fil
+                //Meddela användaren att ett oväntat fel skett
+            }
         }
     }
 

@@ -11,6 +11,7 @@ namespace Scheduler.Exceptions
     {
         public MeetingOverlapException(Meeting overlappingMeeting) : base("Overlapping meeting at " + overlappingMeeting)
         {
+
         }
     }
 }

@@ -29,8 +29,14 @@ namespace Scheduler.Models
 
             foreach (Meeting meeting in Meetings)
             {
-                // TODO kasta MeetingOverlapException om två möten överlappar
+                if (meeting.Overlap(newMeeting)) //=true
+                {
+                    throw new MeetingOverlapException(meeting); //Här kastar vi felet, men vi gör inget år det
+                }
+                
             }
+
+         
 
             Meetings.Add(newMeeting);
         }
@@ -45,7 +51,12 @@ namespace Scheduler.Models
                 if (meeting == meetingToChange)
                     continue;
 
-                // TODO kasta MeetingOverlapException om två möten överlappar
+                if (meeting.Overlap(attemptMeeting)) 
+                {
+                    throw new MeetingOverlapException(meeting); //Här kastar vi felet, men vi gör inget år det
+                }
+
+
             }
 
             meetingToChange.Start = newStart;
