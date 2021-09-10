@@ -36,16 +36,20 @@ namespace Scheduler.Models
 
         public void RandomlyFillUpMeetings()
         {
-            foreach (CaseWorker caseWorker in CaseWorkers)
+            //Här går vi igenom varje caseWorkers mötesschema
+            foreach (CaseWorker caseWorker in CaseWorkers) //För varje objenktinstans (caseWorker) av
+                                                           //klassen Caseworker i listan CaseWorkers
             {
-                foreach (Meeting meeting in caseWorker.Meetings)
+                foreach (Meeting meeting in caseWorker.Meetings) //För varje meeting i klassen Meeting i varje 
+                                                                    //caseWorker.Meetings-listan (varje caseWorker har en egen lista med möten)
                 {
-                    if (UnassignedApplicants.Count == 0)
+                    if (UnassignedApplicants.Count == 0) //count motsvarar .Length i en array
                         return;
 
                     if (meeting.Applicant == null)
                     {
-                        int randomIndex = 0; //TODO detta är inte slumpat.
+                        Random rand = new Random(); //Skapar ett Random objekt som heter rand
+                        int randomIndex = rand.Next(0, UnassignedApplicants.Count); //0 till slutet på Applicants-listan
 
                         meeting.Applicant = UnassignedApplicants[randomIndex];
                         UnassignedApplicants.RemoveAt(randomIndex);
