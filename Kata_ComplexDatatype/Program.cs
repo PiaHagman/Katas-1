@@ -34,21 +34,32 @@ namespace OnlineOrderSystem
 
                 if (choice == 1)
                 {
-                    orders.Add(new OnlineOrder("electric bicycle"));
+                    orders.Add(new OnlineOrder("electric bicycle", 250));
                 }
                 else if (choice == 2)
                 {
-                    orders.Add(new OnlineOrder("trampoline"));
+                    orders.Add(new OnlineOrder("trampoline", 500));
                 }
                 else if (choice == 3)
                 {
-                    orders.Add(new OnlineOrder("bouquet"));
+                    orders.Add(new OnlineOrder("bouquet", 25));
                 }
                 else if (choice == 4)
                 {
                     Console.Write("Type in order: ");
                     string articleName = Console.ReadLine();
-                    orders.Add(new OnlineOrder(articleName));
+                    orders.Add(new OnlineOrder(articleName, 1000));
+                }
+
+                else if (choice == 5)
+                {
+                    foreach (OnlineOrder order in orders)
+                    {
+                        Console.WriteLine($"Orderdatum:\tOrdernummer:\tProduktnamn:\tProduktsumma");
+                        Console.WriteLine($"{order.orderDate}\t{order.GetOrderNumber()}\t{order.productName}\t{order.orderSum}");
+                    }
+
+                    Console.ReadKey();
                 }
                 else if (choice == 6)
                 {
